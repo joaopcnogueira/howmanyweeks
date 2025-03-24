@@ -4,7 +4,7 @@
 "How Many Weeks" is a project designed to calculate the number of weeks between two dates. This can be useful for various applications such as project planning, event scheduling, or simply tracking the passage of time.
 
 ## Features
-- Calculate the number of weeks between two dates
+- Calculate the number of weeks or days between two dates
 - User-friendly interface
 - Accurate and efficient calculations
 
