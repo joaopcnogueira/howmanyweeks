@@ -1,6 +1,7 @@
 def main() -> None:
     from datetime import datetime, timedelta
     import argparse
+    from importlib.metadata import version, PackageNotFoundError
 
     def parse_date(date_str):
         try:
@@ -18,6 +19,13 @@ def main() -> None:
     parser.add_argument('--end_date', type=parse_date, default=default_end_date, help="End date in YYYY-MM-DD format (default: current date)")
     parser.add_argument('--unit', '-u', choices=['weeks', 'days'], default='weeks', help="Unit of time to calculate difference (default: weeks)")
 
+    try:
+        package_version = version('howmanyweeks')
+    except PackageNotFoundError:
+        package_version = 'unknown'
+
+    parser.add_argument('--version', '-v', action='version', version=package_version, help="Show the version of the package and exit")
+
     args = parser.parse_args()
 
     start_date = args.start_date
@@ -33,4 +41,4 @@ def main() -> None:
         print(len(weeks))
     elif unit == 'days':
         delta = end_date - start_date
-        print(delta.days+1)
+        print(delta.days + 1)
